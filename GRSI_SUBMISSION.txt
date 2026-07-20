@@ -1,0 +1,47 @@
+Graphics Replicability Stamp Initiative Submission Metadata
+
+Paper title:
+Adaptive Meshing of Non-Manifold Parametric Patch Complexes with Shared-Curve Compatibility
+
+Manuscript:
+CAG-D-26-00358R2
+
+Authors:
+Tiago Guimarães Sombra
+Joaquim Bento Cavalcante-Neto
+Creto Augusto Vidal
+
+Journal:
+Elsevier Computers & Graphics
+
+Track:
+Computer Graphics
+
+Code repository:
+https://github.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi
+
+Primary supported operating system:
+Windows 10 or Windows 11, 64-bit
+
+Representative paper result:
+Figure 7, Section 4.3, “Eistute model”
+
+Representative execution script:
+reproduce_eistute_windows.bat
+
+Representative generated data:
+results/eistute/*passo_4_malha_4.obj
+
+Expected target:
+Stage 4
+7,184 triangular faces
+Normalized error 0.036712
+Total error reduction 96.3288%
+58.6303% of triangles with quality q >= 0.60
+Recorded mean shared-curve compatibility error 0.0
+
+Installation instructions:
+INSTALL_WINDOWS.txt
+
+Reviewer guide:
+docs/GRSI_REVIEW_GUIDE.md

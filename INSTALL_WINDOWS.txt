@@ -1,0 +1,162 @@
+GRSI CLEAN WINDOWS INSTALLATION INSTRUCTIONS
+============================================
+
+Supported system
+----------------
+Windows 10 or Windows 11, 64-bit.
+
+Installation layout used by these instructions
+----------------------------------------------
+MSYS2:
+C:\msys64
+
+Repository:
+C:\grsi\adaptive-nonmanifold-meshing-grsi
+
+The project does not require a GPU, MPI, OpenMP or proprietary software for
+the representative GRSI execution.
+
+1. Install MSYS2
+----------------
+Download the current 64-bit MSYS2 installer from:
+
+https://www.msys2.org/
+
+Install it using the default directory:
+
+C:\msys64
+
+After installation, open the application named:
+
+MSYS2 UCRT64
+
+2. Update MSYS2
+---------------
+In the MSYS2 UCRT64 terminal, run:
+
+pacman -Syu
+
+If the terminal asks to close, close it, reopen "MSYS2 UCRT64", and run:
+
+pacman -Syu
+
+Repeat until no further core update is required.
+
+3. Install compiler, CMake, Python and Git
+------------------------------------------
+In the MSYS2 UCRT64 terminal, run:
+
+pacman -S --needed \
+  git \
+  mingw-w64-ucrt-x86_64-toolchain \
+  mingw-w64-ucrt-x86_64-cmake \
+  mingw-w64-ucrt-x86_64-python
+
+Accept the default package selections when prompted.
+
+The compiler, CMake and Python executables will be installed under:
+
+C:\msys64\ucrt64\bin
+
+4. Obtain the repository
+------------------------
+Create the review directory:
+
+mkdir -p /c/grsi
+cd /c/grsi
+
+Clone the public repository:
+
+git clone https://github.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi.git
+
+Enter the repository:
+
+cd adaptive-nonmanifold-meshing-grsi
+
+Alternatively, download the repository ZIP from GitHub and extract it to:
+
+C:\grsi\adaptive-nonmanifold-meshing-grsi
+
+5. Verify the installed tools
+-----------------------------
+From the MSYS2 UCRT64 terminal, run:
+
+cmake --version
+g++ --version
+mingw32-make --version
+python --version
+
+Each command must print a version and terminate without an error.
+
+6. Verify the archived Eistute reference
+----------------------------------------
+From the repository root:
+
+python scripts/verify_reference.py
+
+Expected first line:
+
+Archived Eistute reference verified.
+
+7. Reproduce Figure 7 — Eistute
+-------------------------------
+From the repository root in the MSYS2 UCRT64 terminal, run:
+
+cmd.exe /c reproduce_eistute_windows.bat
+
+The script takes no parameters. It:
+
+1. configures a Release build;
+2. compiles the C++17 executable;
+3. removes stale Eistute output;
+4. executes the article configuration;
+5. generates the stage meshes;
+6. verifies that the final generated mesh is stage 4;
+7. verifies that the stage-4 mesh contains 7,184 triangular faces.
+
+Expected final messages include:
+
+Eistute final stage verified: 4
+Triangles: 7184
+Published Eistute target triangle count verified.
+Representative Eistute result reproduced successfully.
+
+8. Generated data
+-----------------
+Results are written under:
+
+C:\grsi\adaptive-nonmanifold-meshing-grsi\results\eistute
+
+The representative mesh filename ends with:
+
+passo_4_malha_4.obj
+
+The OBJ is a standard text-format triangular mesh. This is the generated data
+used for the representative paper result.
+
+9. Generate the tested-environment report
+-----------------------------------------
+From Windows PowerShell in the repository root, run:
+
+powershell -ExecutionPolicy Bypass -File .\scripts\collect_environment_windows.ps1
+
+This creates:
+
+TESTED_ENVIRONMENT.txt
+
+10. Troubleshooting
+-------------------
+If "cmake", "g++", "mingw32-make" or "python" is not found, verify that the
+commands are being run inside the "MSYS2 UCRT64" terminal.
+
+If running from PowerShell instead, prepend the MSYS2 UCRT64 directory to the
+current session PATH:
+
+$env:Path = "C:\msys64\ucrt64\bin;C:\msys64\usr\bin;$env:Path"
+
+Then rerun:
+
+.\reproduce_eistute_windows.bat
+
+The build is intentionally limited to one compilation job to avoid excessive
+memory use with MinGW on Windows.

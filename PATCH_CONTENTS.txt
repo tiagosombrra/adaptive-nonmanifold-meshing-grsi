@@ -1,0 +1,32 @@
+GRSI REPOSITORY PATCH CONTENTS
+
+Copy this ZIP over the root of:
+adaptive-nonmanifold-meshing-grsi
+
+Files added:
+GRSI_SUBMISSION.txt
+INSTALL_WINDOWS.txt
+GRSI_LIABILITY.txt
+DATA_PROVENANCE.md
+GRSI_FORM_VALUES.txt
+reproduce_eistute_windows.bat
+reproduce_eistute_linux.sh
+assets/grsi_representative.png
+docs/GRSI_REVIEW_GUIDE.md
+paper/README.md
+scripts/collect_environment_windows.ps1
+scripts/validate_grsi_package.py
+scripts/regenerate_manifest.sh
+scripts/regenerate_manifest.ps1
+
+File replaced:
+README.md
+
+Not included:
+paper/preprint.pdf
+MANIFEST.sha256
+TESTED_ENVIRONMENT.txt
+
+The preprint must be an author-approved PDF.
+The manifest must be regenerated after all new files are staged.
+TESTED_ENVIRONMENT.txt must be generated on the actual test machine.
