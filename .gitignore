@@ -1,0 +1,10 @@
+build/
+build-*/
+results/
+*.o
+*.obj
+*.exe
+*.log
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+title: "Adaptive Meshing of Non-Manifold Parametric Patch Complexes with Shared-Curve Compatibility: Replication Package"
+message: "Please cite the associated Computers & Graphics article."
+type: software
+authors:
+  - family-names: "Sombra"
+    given-names: "Tiago"
+repository-code: "https://github.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi"
+version: "1.0.0"
+date-released: "2026-07-20"
+keywords:
+  - adaptive meshing
+  - non-manifold surfaces
+  - parametric patches
+  - shared-curve compatibility
