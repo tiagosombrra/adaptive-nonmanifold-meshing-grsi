@@ -35,7 +35,7 @@ def expected_final_stage(config_path: Path) -> int:
         fail(f"invalid adaptive stage count in {config_path}: {raw_count}")
     if count < 1:
         fail(f"adaptive stage count must be positive in {config_path}")
-    return count - 1
+    return count
 
 
 def discover_stage_meshes(root: Path) -> list[tuple[int, Path]]:
