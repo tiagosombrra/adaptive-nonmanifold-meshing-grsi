@@ -1,15 +1,69 @@
 cff-version: 1.2.0
-title: "Adaptive Meshing of Non-Manifold Parametric Patch Complexes with Shared-Curve Compatibility: Replication Package"
-message: "Please cite the associated Computers & Graphics article."
+
+message: >-
+  Please cite the associated Computers & Graphics article when using
+  this replication package.
+
+title: >-
+  Adaptive Meshing of Non-Manifold Parametric Patch Complexes with
+  Shared-Curve Compatibility: Replication Package
+
 type: software
+
 authors:
-  - family-names: "Sombra"
-    given-names: "Tiago"
+  - given-names: "Tiago Guimarães"
+    family-names: "Sombra"
+    affiliation: "Universidade Federal do Ceará"
+    orcid: "https://orcid.org/0000-0002-0020-1203"
+
+  - given-names: "Joaquim Bento"
+    family-names: "Cavalcante-Neto"
+    affiliation: "Universidade Federal do Ceará"
+    orcid: "https://orcid.org/0000-0003-1143-6662"
+
+  - given-names: "Creto Augusto"
+    family-names: "Vidal"
+    affiliation: "Universidade Federal do Ceará"
+    orcid: "https://orcid.org/0000-0002-0857-6333"
+
 repository-code: "https://github.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi"
+
 version: "1.0.0"
+
 date-released: "2026-07-20"
+
 keywords:
-  - adaptive meshing
-  - non-manifold surfaces
-  - parametric patches
-  - shared-curve compatibility
+  - "adaptive meshing"
+  - "non-manifold surfaces"
+  - "parametric patches"
+  - "shared-curve compatibility"
+  - "surface meshing"
+  - "Bezier patches"
+  - "Hermite patches"
+  - "computational geometry"
+
+preferred-citation:
+  type: article
+
+  title: >-
+    Adaptive Meshing of Non-Manifold Parametric Patch Complexes with
+    Shared-Curve Compatibility
+
+  authors:
+    - given-names: "Tiago Guimarães"
+      family-names: "Sombra"
+      affiliation: "Universidade Federal do Ceará"
+      orcid: "https://orcid.org/0000-0002-0020-1203"
+
+    - given-names: "Joaquim Bento"
+      family-names: "Cavalcante-Neto"
+      affiliation: "Universidade Federal do Ceará"
+      orcid: "https://orcid.org/0000-0003-1143-6662"
+
+    - given-names: "Creto Augusto"
+      family-names: "Vidal"
+      affiliation: "Universidade Federal do Ceará"
+      orcid: "https://orcid.org/0000-0002-0857-6333"
+
+  journal: "Computers & Graphics"
+  year: 2026
