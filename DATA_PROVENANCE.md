@@ -2,34 +2,23 @@
 
 The replication package contains the following article evaluation models:
 
-- `input_models/book_v7a.bp`;
-- `input_models/eistute2.fixed.bp`;
-- `input_models/ribbed_bracket_nm_decor.bp`.
+* `input_models/book_v7a.bp`;
+* `input_models/eistute2.fixed.bp`;
+* `input_models/ribbed_bracket_nm_decor.bp`.
 
-They were retained from the archived experimental snapshot identified in
+The three non-manifold parametric patch models — Book, Eistute and Decor
+Shelf — were created by Tiago Guimarães Sombra specifically for the
+experiments reported in the article *Adaptive Meshing of Non-Manifold
+Parametric Patch Complexes with Shared-Curve Compatibility*.
+
+The model files are original author-created research data. They were not
+obtained from, converted from, or derived from third-party mesh or CAD model
+assets.
+
+The files were retained from the archived experimental snapshot identified in
 `SOURCE_SNAPSHOT.txt` and are included because they are necessary to execute
-the article configurations.
+the article configurations and reproduce the reported results.
 
-## Author confirmation required before submission
-
-The corresponding author must confirm one of the following statements before
-committing this file:
-
-### Option A — author-owned models
-
-> The Book, Eistute and Decor Shelf input models were created by the authors,
-> or the authors otherwise hold the necessary rights to redistribute them.
-> They are made available with this replication package under the repository
-> MIT License for academic and non-commercial research use.
-
-### Option B — third-party or restricted models
-
-Replace this section with, for each model:
-
-- original creator;
-- original source URL or citation;
-- applicable license;
-- redistribution permission;
-- acquisition procedure if redistribution is restricted.
-
-Do not submit the repository while this confirmation remains unresolved.
+Tiago Guimarães Sombra holds the necessary rights to distribute these model
+files and grants permission to use, copy, modify and redistribute them under
+the terms of the repository MIT License.
