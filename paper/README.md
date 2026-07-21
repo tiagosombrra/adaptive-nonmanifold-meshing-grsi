@@ -1,17 +1,17 @@
-# Direct preprint PDF for the GRSI form
+# Article publication status
 
-The GRSI submission form requires a URL that resolves directly to a PDF.
+The article has been fully accepted and is currently in the publisher's
+production process.
 
-Before submitting the form, either:
+No manuscript PDF is bundled with this replication repository. In particular,
+the repository does not distribute publisher proofs, an Article in Press PDF,
+or the final publisher-formatted article.
 
-1. place an author-approved preprint at `paper/preprint.pdf`, commit it, and use
+When the publisher assigns a DOI or a public article page, use that stable
+publication link in the GRSI submission metadata. If the submission form
+requires a paper URL before a DOI or public article page exists, contact the
+GRSI General Chair and state that the accepted article is still in production.
 
-   `https://raw.githubusercontent.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi/main/paper/preprint.pdf`
-
-or
-
-2. use another stable URL that returns the PDF directly, such as an
-   institutional repository or direct arXiv PDF URL.
-
-Do not add an accepted manuscript or publisher-formatted PDF unless its public
-distribution is permitted by the applicable publishing agreement.
+A preprint or accepted manuscript should be deposited separately only when the
+authors intentionally choose to do so and the applicable publisher agreement
+permits the selected version and hosting location.

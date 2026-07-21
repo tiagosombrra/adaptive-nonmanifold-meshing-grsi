@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import struct
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,6 +39,35 @@ def png_dimensions(path: Path) -> tuple[int, int]:
             raise ValueError("missing PNG IHDR")
         width, height = struct.unpack(">II", stream.read(8))
         return width, height
+
+
+def read_config(path: Path) -> dict[str, str]:
+    values: dict[str, str] = {}
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        values[key.strip()] = value.strip()
+    return values
+
+
+def tracked_files() -> set[str]:
+    try:
+        completed = subprocess.run(
+            ["git", "ls-files"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return set()
+    return {
+        line.strip().replace("\\", "/")
+        for line in completed.stdout.splitlines()
+        if line.strip()
+    }
 
 
 def main() -> None:
@@ -77,12 +107,34 @@ def main() -> None:
                 "the applicable provenance option"
             )
 
-    preprint = ROOT / "paper/preprint.pdf"
-    if not preprint.is_file():
-        print(
-            "NOTICE: paper/preprint.pdf is not present. A different direct PDF URL "
-            "may be used in the GRSI form."
+    eistute_config_path = ROOT / "configs/eistute/article.conf"
+    if eistute_config_path.is_file():
+        config = read_config(eistute_config_path)
+        if config.get("ADAPTIVE_MAX_STEPS") != "4":
+            errors.append(
+                "configs/eistute/article.conf must set ADAPTIVE_MAX_STEPS=4 "
+                "for the Figure 7 states 0-4"
+            )
+
+    tracked = tracked_files()
+    generated_tracked = sorted(
+        path
+        for path in tracked
+        if "/__pycache__/" in f"/{path}/"
+        or path.endswith((".pyc", ".pyo", ".pyd"))
+    )
+    if generated_tracked:
+        errors.append(
+            "generated Python files are tracked by Git: "
+            + ", ".join(generated_tracked)
         )
+
+    if "PATCH_CONTENTS.txt" in tracked or (ROOT / "PATCH_CONTENTS.txt").exists():
+        errors.append(
+            "PATCH_CONTENTS.txt is an internal packaging note and must not be "
+            "included in the submission repository"
+        )
+
 
     if errors:
         print("GRSI package validation found unresolved items:")
@@ -92,6 +144,8 @@ def main() -> None:
 
     print("GRSI repository package structure verified.")
     print("Representative image verified: 250x250 PNG.")
+    print("Eistute stage range verified: 0-4.")
+    print("No generated Python bytecode or internal patch note is tracked.")
 
 
 if __name__ == "__main__":

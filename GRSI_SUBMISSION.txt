@@ -6,6 +6,10 @@ Adaptive Meshing of Non-Manifold Parametric Patch Complexes with Shared-Curve Co
 Manuscript:
 CAG-D-26-00358R2
 
+Publication status:
+Fully accepted; publisher production in progress
+DOI/public article URL pending
+
 Authors:
 Tiago Guimarães Sombra
 Joaquim Bento Cavalcante-Neto
@@ -31,6 +35,12 @@ reproduce_eistute_windows.bat
 
 Representative generated data:
 results/eistute/*passo_4_malha_4.obj
+
+Result semantics:
+The representative object is the saved stage-4 candidate mesh used in Figure 7.
+Rejected adaptive candidates are intentionally retained for analysis; the stage-4
+OBJ is verified against the archived paper target independently of the hybrid
+transition-acceptance decision.
 
 Expected target:
 Stage 4

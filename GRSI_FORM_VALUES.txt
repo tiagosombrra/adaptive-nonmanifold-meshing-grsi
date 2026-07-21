@@ -8,9 +8,11 @@ Short description
 -----------------
 C++17 implementation of adaptive triangular meshing for non-manifold
 parametric patch complexes with shared-curve compatibility. The parameter-free
-GRSI script compiles the software, reproduces the Eistute stage sequence used
-in Figure 7, exports the final stage-4 OBJ mesh, and verifies the published
-7,184-triangle target.
+GRSI script compiles the software, reproduces the five Eistute states 0–4 used
+in Figure 7, exports the saved stage-4 candidate OBJ mesh, and verifies the
+published 7,184-triangle target. Rejected adaptive candidates are intentionally
+retained for analysis, so the stage-4 data remain available independently of
+the hybrid transition-acceptance decision.
 
 Operating system
 ----------------
@@ -23,14 +25,18 @@ https://raw.githubusercontent.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi
 The image must be committed before submitting the form. It is exactly
 250 × 250 pixels.
 
-Preprint — direct PDF URL
--------------------------
-Preferred repository URL after adding paper/preprint.pdf:
+Paper/publication URL
+---------------------
+The article is fully accepted and is currently in the publisher's production
+process. A DOI and public article page are not yet available.
 
-https://raw.githubusercontent.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi/main/paper/preprint.pdf
+When available, enter the stable DOI or publisher article-page URL. Do not
+upload or publicly distribute publisher proofs or the final formatted article
+solely to create a URL for this form.
 
-Do not enter this URL until the PDF has been added and the raw URL opens the
-PDF directly. An institutional or direct arXiv PDF URL may be used instead.
+If the current form requires a paper URL before the DOI or article page exists,
+contact the GRSI General Chair and report that the accepted article is still in
+production.
 
 Journal/conference
 ------------------
@@ -50,7 +56,7 @@ Tiago Guimarães Sombra, Joaquim Bento Cavalcante-Neto, Creto Augusto Vidal
 
 Representative paper result
 ----------------------------
-Figure 7, Section 4.3, “Eistute model”
+Figure 7, Section 4.3, “Eistute model”, saved stage-4 candidate mesh
 
 Repository reproduction script
 ------------------------------

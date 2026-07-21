@@ -5,8 +5,14 @@
 The representative result selected for the Graphics Replicability Stamp
 Initiative review is **Figure 7**, Section 4.3, “Eistute model”.
 
-The paper figure presents five saved states numbered 0–4. The GRSI script
-reproduces these data and verifies the final stage-4 triangular mesh.
+The paper figure presents five saved states numbered 0–4. In the configuration
+files, `ADAPTIVE_MAX_STEPS` denotes the highest saved stage index. The Eistute
+configuration therefore uses the value `4`.
+
+The representative object is the saved stage-4 candidate mesh used in Figure 7.
+The implementation intentionally saves rejected candidates for analysis; the
+stage-4 OBJ is verified against the archived paper target independently of the
+hybrid transition-acceptance decision.
 
 ## Primary review platform
 
@@ -16,20 +22,23 @@ reproduces these data and verifies the final stage-4 triangular mesh.
 - CMake;
 - Python 3.
 
+The MinGW compiler runtime is linked statically to avoid accidental use of an
+incompatible GCC runtime from another Windows toolchain.
+
 Complete clean-machine instructions are in `INSTALL_WINDOWS.txt`.
 
 ## One-command reproduction
 
-From the repository root:
+From the repository root in PowerShell:
 
 ```powershell
 .\reproduce_eistute_windows.bat
 ```
 
-When using the MSYS2 UCRT64 terminal:
+When using the MSYS2 UCRT64 terminal or Git Bash:
 
 ```bash
-cmd.exe /c reproduce_eistute_windows.bat
+cmd.exe //c reproduce_eistute_windows.bat
 ```
 
 No parameters are required.
@@ -60,6 +69,13 @@ The run log is written to:
 ```text
 results/eistute/run.log
 ```
+
+The log may report `FindUV` calls that reached the configured iteration limit.
+That counter is a numerical diagnostic and is not part of the GRSI
+triangle-count acceptance test.
+
+Legacy internal timing fields are also diagnostic. They are not reproducibility
+targets; use an external wall-clock measurement when timing is required.
 
 ## Archived evidence
 

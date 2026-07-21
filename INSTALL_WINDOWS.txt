@@ -16,6 +16,10 @@ C:\grsi\adaptive-nonmanifold-meshing-grsi
 The project does not require a GPU, MPI, OpenMP or proprietary software for
 the representative GRSI execution.
 
+The Windows build links the MinGW compiler runtime statically. This prevents
+the executable from accidentally loading incompatible GCC runtime DLLs from
+another Windows toolchain in PATH.
+
 1. Install MSYS2
 ----------------
 Download the current 64-bit MSYS2 installer from:
@@ -88,6 +92,13 @@ python --version
 
 Each command must print a version and terminate without an error.
 
+The command:
+
+which g++
+
+should resolve under /ucrt64/bin. The build script also prints the compiler
+selected by CMake.
+
 6. Verify the archived Eistute reference
 ----------------------------------------
 From the repository root:
@@ -102,17 +113,21 @@ Archived Eistute reference verified.
 -------------------------------
 From the repository root in the MSYS2 UCRT64 terminal, run:
 
-cmd.exe /c reproduce_eistute_windows.bat
+cmd.exe //c reproduce_eistute_windows.bat
+
+Use //c rather than /c in an MSYS-style shell to prevent path conversion.
 
 The script takes no parameters. It:
 
-1. configures a Release build;
-2. compiles the C++17 executable;
-3. removes stale Eistute output;
-4. executes the article configuration;
-5. generates the stage meshes;
-6. verifies that the final generated mesh is stage 4;
-7. verifies that the stage-4 mesh contains 7,184 triangular faces.
+1. removes any previous CMake build directory;
+2. configures a Release build with the current g++.exe;
+3. statically links the MinGW compiler runtime;
+4. compiles the C++17 executable with one build job;
+5. removes stale Eistute output;
+6. executes the article configuration;
+7. generates saved stages 0 through 4;
+8. verifies that the highest generated stage is 4;
+9. verifies that the stage-4 candidate mesh contains 7,184 triangular faces.
 
 Expected final messages include:
 
@@ -131,18 +146,26 @@ The representative mesh filename ends with:
 
 passo_4_malha_4.obj
 
-The OBJ is a standard text-format triangular mesh. This is the generated data
-used for the representative paper result.
+The OBJ is a standard text-format triangular mesh. It is the saved stage-4
+candidate data selected for the representative paper result.
+
+The run log may state that the hybrid criterion rejected the transition to the
+stage-4 candidate. This is expected: rejected candidates are intentionally
+retained for analysis, and the GRSI verifier checks the archived Figure 7 mesh
+target independently of that transition decision.
 
 9. Generate the tested-environment report
 -----------------------------------------
-From Windows PowerShell in the repository root, run:
+After the final successful representative run, open Windows PowerShell in the
+repository root and run:
 
 powershell -ExecutionPolicy Bypass -File .\scripts\collect_environment_windows.ps1
 
 This creates:
 
 TESTED_ENVIRONMENT.txt
+
+Confirm that the recorded repository commit is the commit being submitted.
 
 10. Troubleshooting
 -------------------
@@ -158,5 +181,6 @@ Then rerun:
 
 .\reproduce_eistute_windows.bat
 
-The build is intentionally limited to one compilation job to avoid excessive
+The build removes the previous CMake build directory to avoid compiler-cache
+reuse and is intentionally limited to one compilation job to avoid excessive
 memory use with MinGW on Windows.

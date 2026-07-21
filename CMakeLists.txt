@@ -11,6 +11,7 @@ option(AP_MESH_USE_OPENMP "Enable OpenMP parallelism when available." ON)
 option(AP_MESH_ENABLE_LTO "Enable Link Time Optimization (IPO/LTO) in Release builds when supported." ON)
 option(AP_MESH_ENABLE_WARNINGS "Enable extra compiler warnings." ON)
 option(AP_MESH_DISABLE_STRICT_ALIASING "Compile with -fno-strict-aliasing (useful if code violates strict aliasing)." ON)
+option(AP_MESH_STATIC_MINGW_RUNTIME "Link the MinGW runtime statically for a portable Windows executable." ON)
 
 # Default build type for single-config generators
 if(NOT CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE)
@@ -36,6 +37,18 @@ target_compile_features(ap_mesh PRIVATE cxx_std_17)
 target_sources(ap_mesh PRIVATE ${AP_MESH_SOURCES})
 
 target_include_directories(ap_mesh PRIVATE "${INC_DIR}")
+
+# Avoid dependence on whichever MinGW runtime DLLs happen to appear first in
+# the reviewer's PATH. Windows system/UCRT dependencies remain dynamic.
+if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+  target_link_options(
+    ap_mesh
+    PRIVATE
+      -static
+      -static-libgcc
+      -static-libstdc++
+  )
+endif()
 
 set(AP_MESH_WORKDIR "${CMAKE_CURRENT_SOURCE_DIR}")
 
@@ -182,3 +195,4 @@ message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 message(STATUS "MPI: ${AP_MESH_USE_MPI}")
 message(STATUS "OpenMP: ${AP_MESH_USE_OPENMP}")
 message(STATUS "LTO: ${AP_MESH_ENABLE_LTO}")
+message(STATUS "Static MinGW runtime: ${AP_MESH_STATIC_MINGW_RUNTIME}")
