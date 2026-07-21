@@ -140,9 +140,18 @@ The implementation also prints legacy internal timing fields. These fields are n
 ## Article publication status
 
 The article is fully accepted and is currently in the publisher's production
-process. No manuscript or publisher-formatted PDF is distributed in this
-repository. The DOI or public article-page link should be added to the GRSI
-metadata when it becomes available.
+process. This repository includes the authors' original pre-peer-review
+manuscript at [`paper/preprint.pdf`](paper/preprint.pdf). It does not include
+the accepted manuscript, an Article in Press, a journal proof, or the final
+publisher-formatted version of record.
+
+Direct preprint PDF URL:
+
+```text
+https://raw.githubusercontent.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi/main/paper/preprint.pdf
+```
+
+The DOI or public article-page link should be added when it becomes available.
 
 ## GRSI submission files
 
@@ -153,7 +162,8 @@ metadata when it becomes available.
 - `GRSI_FORM_VALUES.txt`: values prepared for the online submission form;
 - `docs/GRSI_REVIEW_GUIDE.md`: reviewer-oriented workflow;
 - `assets/grsi_representative.png`: 250 × 250 representative image;
-- `paper/README.md`: publication-status note; no manuscript PDF is bundled while the article is in production.
+- `paper/preprint.pdf`: direct author-preprint PDF required by the submission form;
+- `paper/README.md`: version and publication-status information for the preprint.
 
 ## Environment report
 
@@ -184,7 +194,7 @@ Before the final commit, regenerate and validate `MANIFEST.sha256` using the scr
 - `reference/`: archived Eistute reference data;
 - `scripts/`: build, execution and verification scripts;
 - `assets/`: representative submission image;
-- `paper/`: publication-status information;
+- `paper/`: author preprint and publication-status information;
 - `docs/`: provenance and reproducibility notes.
 
 ## License

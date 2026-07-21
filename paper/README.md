@@ -1,17 +1,19 @@
-# Article publication status
+# Author preprint
 
-The article has been fully accepted and is currently in the publisher's
-production process.
+This directory contains the author preprint of:
 
-No manuscript PDF is bundled with this replication repository. In particular,
-the repository does not distribute publisher proofs, an Article in Press PDF,
-or the final publisher-formatted article.
+*Adaptive Meshing of Non-Manifold Parametric Patch Complexes with
+Shared-Curve Compatibility*
 
-When the publisher assigns a DOI or a public article page, use that stable
-publication link in the GRSI submission metadata. If the submission form
-requires a paper URL before a DOI or public article page exists, contact the
-GRSI General Chair and state that the accepted article is still in production.
+`preprint.pdf` is the authors' original manuscript version prepared before
+peer review. It is not the accepted manuscript, an Article in Press, a journal
+proof, or the final publisher-formatted version of record.
 
-A preprint or accepted manuscript should be deposited separately only when the
-authors intentionally choose to do so and the applicable publisher agreement
-permits the selected version and hosting location.
+Direct PDF URL:
+
+https://raw.githubusercontent.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi/main/paper/preprint.pdf
+
+The article has been fully accepted by *Computers & Graphics* and is currently
+in the publisher's production process. When a DOI is assigned, this document
+and the repository metadata should be updated with a link to the version of
+record.

@@ -10,6 +10,13 @@ Publication status:
 Fully accepted; publisher production in progress
 DOI/public article URL pending
 
+Preprint:
+https://raw.githubusercontent.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi/main/paper/preprint.pdf
+
+Preprint version:
+Authors' original pre-peer-review manuscript; not the accepted manuscript,
+Article in Press, journal proof, or final publisher-formatted version of record.
+
 Authors:
 Tiago Guimarães Sombra
 Joaquim Bento Cavalcante-Neto

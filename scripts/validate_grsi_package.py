@@ -6,6 +6,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+MAX_PREPRINT_BYTES = 100 * 1024 * 1024
 
 REQUIRED_FILES = [
     "README.md",
@@ -20,6 +21,7 @@ REQUIRED_FILES = [
     "reproduce_eistute_linux.sh",
     "docs/GRSI_REVIEW_GUIDE.md",
     "assets/grsi_representative.png",
+    "paper/preprint.pdf",
     "reference/eistute_stage4.obj",
     "reference/eistute_metrics.csv",
     "reference/eistute_stage4.json",
@@ -90,6 +92,16 @@ def main() -> None:
         except ValueError as exc:
             errors.append(f"invalid representative image: {exc}")
 
+    preprint_path = ROOT / "paper/preprint.pdf"
+    if preprint_path.is_file():
+        with preprint_path.open("rb") as stream:
+            if stream.read(5) != b"%PDF-":
+                errors.append("paper/preprint.pdf does not have a valid PDF signature")
+        if preprint_path.stat().st_size > MAX_PREPRINT_BYTES:
+            errors.append(
+                "paper/preprint.pdf exceeds the GRSI form limit of 100 MB"
+            )
+
     liability = ROOT / "GRSI_LIABILITY.txt"
     if liability.is_file():
         text = liability.read_text(encoding="utf-8")
@@ -135,7 +147,6 @@ def main() -> None:
             "included in the submission repository"
         )
 
-
     if errors:
         print("GRSI package validation found unresolved items:")
         for error in errors:
@@ -144,6 +155,7 @@ def main() -> None:
 
     print("GRSI repository package structure verified.")
     print("Representative image verified: 250x250 PNG.")
+    print("Author preprint verified: valid PDF under 100 MB.")
     print("Eistute stage range verified: 0-4.")
     print("No generated Python bytecode or internal patch note is tracked.")
 
